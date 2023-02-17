@@ -1,0 +1,8 @@
+CREATE OR ALTER PROCEDURE UDP_LLENARCAMPOS_tblGrado
+	@RegistroId	NVARCHAR(255)
+AS
+BEGIN
+	SELECT	grd_Descripcion
+	FROM	tblGrados
+	WHERE	grd_ID = @RegistroId
+END;

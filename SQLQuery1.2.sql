@@ -1,0 +1,9 @@
+CREATE OR ALTER PROCEDURE UDP_LOGIN
+	@USER		NVARCHAR(255),
+	@Password	VARCHAR(MAX)
+AS
+BEGIN
+	DECLARE @Pass VARBINARY(MAX) = HASHBYTES('SHA2_512',@Password);
+	DECLARE @HEH VARCHAR(MAX) = CONVERT(NVARCHAR(MAX),@Pass,1);
+	SELECT Usu_UsuarioID, Usu_Usuario,[Usu_EsAdmin] FROM [dbo].[tblUsuarios] WHERE (Usu_Usuario = @USER AND Usu_Clave = @HEH);
+END;

@@ -1,0 +1,16 @@
+CREATE OR ALTER PROCEDURE UDP_RESTABLECERCONTRA
+	@UsuarioId		NVARCHAR(255),
+	@Contra			VARCHAR(255)
+AS
+BEGIN
+	DECLARE @Pass VARBINARY(MAX) = HASHBYTES('SHA2_512',@Contra);
+	DECLARE @HEH VARCHAR(MAX) = CONVERT(NVARCHAR(MAX),@Pass,1);
+	
+	
+UPDATE [dbo].[tblUsuarios]
+   SET [Usu_Clave] = CONVERT(NVARCHAR(MAX),@HEH,1) 
+      ,[Usu_UsuMod] = @UsuarioId
+      ,[Usu_FechaMod] = GETDATE()
+ WHERE [Usu_UsuarioID] = @UsuarioId
+
+END;

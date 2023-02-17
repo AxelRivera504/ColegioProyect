@@ -1,0 +1,10 @@
+CREATE OR ALTER PROCEDURE UDP_INSERTAR_DEPARTAMENTO
+	@DEPARTAMENTO	NVARCHAR(255),
+	@USUARIO		NVARCHAR(255)
+AS
+BEGIN
+	INSERT INTO [dbo].[tblDepartamentos](Dpt_Descripcion, Dpt_UsuarioCreacionId, Dpt_FechaCreacion, Dpt_UsuarioModificacionId, Dpt_FechaModificacion)
+	VALUES(@DEPARTAMENTO, @USUARIO,GETDATE(),NULL,NULL)
+
+END;
+

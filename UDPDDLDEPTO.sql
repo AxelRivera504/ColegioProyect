@@ -1,0 +1,6 @@
+CREATE OR ALTER PROCEDURE UDP_DDLDEPARTAMENTO
+AS
+BEGIN
+	SELECT  Dpt_DepartamentoId, Dpt_Descripcion
+	FROM	tblDepartamentos
+END;
